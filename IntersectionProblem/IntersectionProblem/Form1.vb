@@ -25,9 +25,28 @@ Public Class Form1
         C = CDbl(Cst)
         D = CDbl(Dst)
 
+        If (B < A Or D < C) Then
+            MessageBox.Show("Please enter valid numbers", "Error")
+            Return
+        End If
+        txtResult.Text = FindIntersection(A, B, C, D)
+
         ' Please write your code here...
-
-        txtResult.Text = "Not implemented yet"
     End Sub
+    Function FindIntersection(a As Double, b As Double, c As Double, d As Double) As String
+        Dim result As String
+        If (b < c) Or (d < a) Then
+            result = "No intersection"
+        Else
+            Dim begPoint As Double
+            begPoint = Math.Max(a, c)
 
+            Dim endpoint As Double
+            endpoint = Math.Min(b, d)
+
+            result = "The intersection is from " & begPoint & " to " & endpoint
+        End If
+        Return result
+
+    End Function
 End Class
